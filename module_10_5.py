@@ -20,7 +20,7 @@ if __name__ == '__main__':                                      # Проверк
     for filename in filenames:                                  # Перебираем все файлы
         read_info(filename)                                     # Считываем информацию из каждого файла
     linear_duration = time.time() - start_time                  # Вычисляем время выполнения
-    print(time.strftime("%H:%M:%S",                      # Форматируем и выводим результат
+    print(time.strftime("%H:%M:%S",                             # Форматируем и выводим результат
                         time.gmtime(linear_duration)) + f".{int((linear_duration % 1) * 1_000_000):06d} (линейный)")
 
     # --- Многопроцессный вызов ---
@@ -28,5 +28,5 @@ if __name__ == '__main__':                                      # Проверк
     with Pool() as pool:                                        # Создаем пул процессов
         pool.map(read_info, filenames)                          # Выполняем считывание из всех файлов одновременно
     multi_duration = time.time() - start_time                   # Вычисляем время выполнения
-    print(time.strftime("%H:%M:%S",                      # Форматируем и выводим результат
+    print(time.strftime("%H:%M:%S",                             # Форматируем и выводим результат
                         time.gmtime(multi_duration)) + f".{int((multi_duration % 1) * 1_000_000):06d} (многопроцессный)")
